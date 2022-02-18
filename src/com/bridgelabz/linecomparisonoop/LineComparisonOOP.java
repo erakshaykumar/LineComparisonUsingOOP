@@ -2,55 +2,41 @@ package com.bridgelabz.linecomparisonoop;
 
 import java.util.Scanner;
 
-class CoOrdinates {
-	public double x;		// co-ordinate x
-	public double y;		// co-ordinate y
-	public double length;
+class Coordinates {
 
-	public double getX() {
-		return x;
+	// static variables
+	public static double x1, x2, y1, y2;
+	public static int distance;
+	static Scanner sc = new Scanner(System.in);
+
+	// computation for first point
+	public void point1() {
+		System.out.println("enter x1 & y1 values of first point");
+		x1 = sc.nextDouble();
+		y1 = sc.nextDouble();
 	}
 
-	public void setX(double x) {
-		this.x = x;
+	// computation for second point
+	public void point2() {
+		System.out.println("enter x2 & y2 values of second point");
+		x2 = sc.nextDouble();
+		y2 = sc.nextDouble();
 	}
 
-	public double getY() {
-		return y;
-	}
-
-	public void setY(double y) {
-		this.y = y;
+	// calculating distance for point1 & point2
+	public void distanceBetweenLines() {
+		distance = (int) Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+		System.out.println("Distance between two points = " + distance);
 	}
 }
 
 public class LineComparisonOOP {
-	public static double lineLength() {
-		CoOrdinates co = new CoOrdinates();
-		try (Scanner scanner = new Scanner(System.in)) {
-			co.setX((scanner.nextInt()));
-			double x1 = co.getX();
-			co.setX((scanner.nextInt()));
-			double x2 = co.getX();
-			co.setY((scanner.nextInt()));
-			double y1 = co.getY();
-			co.setY((scanner.nextInt()));
-			double y2 = co.getY();
-			double x = Math.pow((x1 - x2), 2);
-			double y = Math.pow((y1 - y2), 2);
-			double length = Math.sqrt(x + y);
 
-			return length;
-		}
-	}
-	/*
-	 *  print Welcome Message & Line Length
-	 */
-	
 	public static void main(String[] args) {
-		System.out.println("Welcome To Line Comparison Using OOP's Concept" + "\nEnter the CoOrdinates: ");
-		double lineLength = lineLength();
-		System.out.println("Length of line is " + lineLength);
+		Coordinates co = new Coordinates();
+		co.point1();
+		co.point2();
+		co.distanceBetweenLines();
 	}
 
 }
